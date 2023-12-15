@@ -1,15 +1,4 @@
 from turtle import Turtle
-import random
-
-
-# def random_dots(x, y):
-#     new_dot = Turtle(shape="circle")
-#     new_dot.penup()
-#     new_dot.color("SkyBlue")
-#     # new_dot.hideturtle()
-#     new_dot.goto(x, y)
-#     return new_dot
-
 
 # Constants
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
@@ -25,7 +14,6 @@ class Snake:
         self.snake_size = []
         self.create_snakes()
         self.head = self.snake_size[0]
-        # self.reset_location()
 
     def create_snakes(self):
         for location in STARTING_POSITIONS:
