@@ -38,19 +38,21 @@ while game_is_on:
     snake.move()
 
     # Detect collision with Walls
-    if snake.head.xcor() > right_bound or snake.head.xcor() < left_bound:
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
         game_is_on = False
         score.game_over()
 
-    if snake.head.ycor() > top_bound or snake.head.ycor() < bottom_bound:
-        game_is_on = False
-        print("You lose! You've crashed into Trumps Wall!")
-
     # Detect collision with food
     if snake.head.distance(snake_food) < 15:
-        print("nom nom nom!")
         snake_food.random_dots()
+        snake.extend()
         score.increase_score()
+
+    # Detect collision with tail
+    for tail_part in snake.snake_size:
+        if snake.head.distance(tail_part) < 10 and tail_part != snake.head:
+            game_is_on = False
+            score.game_over()
 
     # Ask to try again or end game.
     if not game_is_on:
