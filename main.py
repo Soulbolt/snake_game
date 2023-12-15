@@ -37,19 +37,22 @@ while game_is_on:
     # Make snake move
     snake.move()
 
+    # Detect collision with Walls
     if snake.head.xcor() > right_bound or snake.head.xcor() < left_bound:
         game_is_on = False
-        print("You lose! You've crashed into Trumps Wall!")
+        score.game_over()
 
     if snake.head.ycor() > top_bound or snake.head.ycor() < bottom_bound:
         game_is_on = False
         print("You lose! You've crashed into Trumps Wall!")
 
+    # Detect collision with food
     if snake.head.distance(snake_food) < 15:
         print("nom nom nom!")
         snake_food.random_dots()
         score.increase_score()
 
+    # Ask to try again or end game.
     if not game_is_on:
         try_again = screen.textinput("Try again?", "Enter yes or no").lower()
         if try_again == "yes":
