@@ -2,6 +2,7 @@ import time
 from turtle import Screen
 from snake import Snake
 from food import Food
+from scoreboard import Scoreboard
 
 # Set up screen size, title, background color
 screen = Screen()
@@ -17,6 +18,8 @@ bottom_bound = -280
 
 snake = Snake()
 snake_food = Food()
+score = Scoreboard()
+
 
 # Set functions and listening actions for navigation keys
 # Key bindings for movement actions
@@ -45,6 +48,7 @@ while game_is_on:
     if snake.head.distance(snake_food) < 15:
         print("nom nom nom!")
         snake_food.random_dots()
+        score.increase_score()
 
     if not game_is_on:
         try_again = screen.textinput("Try again?", "Enter yes or no").lower()

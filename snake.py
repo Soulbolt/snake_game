@@ -25,7 +25,7 @@ class Snake:
         self.snake_size = []
         self.create_snakes()
         self.head = self.snake_size[0]
-        self.reset_location()
+        # self.reset_location()
 
     def create_snakes(self):
         for location in STARTING_POSITIONS:
@@ -59,4 +59,6 @@ class Snake:
             self.head.setheading(RIGHT)
 
     def reset_location(self):
-        self.head.home()
+        for size in self.snake_size:
+            size.reset()
+        # self.move()
