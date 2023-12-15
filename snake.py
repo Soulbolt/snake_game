@@ -2,13 +2,13 @@ from turtle import Turtle
 import random
 
 
-def random_dots(x, y):
-    new_dot = Turtle(shape="circle")
-    new_dot.penup()
-    new_dot.color("SkyBlue")
-    # new_dot.hideturtle()
-    new_dot.goto(x, y)
-    return new_dot
+# def random_dots(x, y):
+#     new_dot = Turtle(shape="circle")
+#     new_dot.penup()
+#     new_dot.color("SkyBlue")
+#     # new_dot.hideturtle()
+#     new_dot.goto(x, y)
+#     return new_dot
 
 
 # Constants
@@ -25,8 +25,8 @@ class Snake:
         self.snake_size = []
         self.create_snakes()
         self.head = self.snake_size[0]
-        self.random_x_position = random.randint(-260, 260)
-        self.random_y_position = random.randint(-260, 260)
+        # self.random_x_position = random.randint(-260, 260)
+        # self.random_y_position = random.randint(-260, 260)
 
     def create_snakes(self):
         for location in STARTING_POSITIONS:
