@@ -25,8 +25,7 @@ class Snake:
         self.snake_size = []
         self.create_snakes()
         self.head = self.snake_size[0]
-        # self.random_x_position = random.randint(-260, 260)
-        # self.random_y_position = random.randint(-260, 260)
+        self.reset_location()
 
     def create_snakes(self):
         for location in STARTING_POSITIONS:
