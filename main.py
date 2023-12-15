@@ -16,26 +16,28 @@ bottom_bound = -280
 
 snakes = Snake()
 
+# Set functions and listening actions for navigation keys
+# Key bindings for movement actions
+screen.listen()
+screen.onkey(snakes.up, "Up")
+screen.onkey(snakes.down, "Down")
+screen.onkey(snakes.left, "Left")
+screen.onkey(snakes.right, "Right")
 # Create a while loop to keep game going
 game_is_on = True
 while game_is_on:
-    # Set functions and listening actions for navigation keys
-    # Key bindings for movement actions
     # ran_loc = random_dots(random_x_position, random_y_position)
-    screen.listen()
-    screen.onkey(snakes.turn_right(90), "d")
-    screen.onkey(snakes.turn_left(90), "a")
     # Make snake move
     screen.update()  # Update animation
     time.sleep(0.1)  # delay of animation
 
     snakes.move()
 
-    if snakes.snake_size[0].xcor() > right_bound or snakes.snake_size[0].xcor() < left_bound:
+    if snakes.head.xcor() > right_bound or snakes.head.xcor() < left_bound:
         game_is_on = False
         print("You lose! You've crashed into Trumps Wall!")
 
-    if snakes.snake_size[0].ycor() > top_bound or snakes.snake_size[0].ycor() < bottom_bound:
+    if snakes.head.ycor() > top_bound or snakes.head.ycor() < bottom_bound:
         game_is_on = False
         print("You lose! You've crashed into Trumps Wall!")
 

@@ -14,13 +14,17 @@ def random_dots(x, y):
 # Constants
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
-ANGLE = 90
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
 
 class Snake:
     def __init__(self):
         self.snake_size = []
         self.create_snakes()
+        self.head = self.snake_size[0]
         self.random_x_position = random.randint(-260, 260)
         self.random_y_position = random.randint(-260, 260)
 
@@ -39,11 +43,17 @@ class Snake:
             self.snake_size[segment_num].goto(new_x, new_y)
         self.snake_size[0].forward(MOVE_DISTANCE)
 
-    def turn_left(self):
-        self.snake_size[0].left(ANGLE)
+    def up(self):
+        self.head.setheading(UP)
 
-    def turn_right(self):
-        self.snake_size[0].right(ANGLE)
+    def down(self):
+        self.head.setheading(DOWN)
+
+    def left(self):
+        self.head.setheading(LEFT)
+
+    def right(self):
+        self.head.setheading(RIGHT)
 
     def reset_location(self):
-        self.snake_size[0].home()
+        self.head.home()
