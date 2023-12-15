@@ -20,19 +20,17 @@ snake_size = []
 
 
 # Set up sneak default position
-def rest_position():
-    for location in starting_positions:
-        new_snake = Turtle(shape="square")
-        new_snake.penup()
-        new_snake.color("white")
-        new_snake.goto(location)
-        snake_size.append(new_snake)
-
+# def rest_position():
+for location in starting_positions:
+    new_snake = Turtle(shape="square")
+    new_snake.penup()
+    new_snake.color("white")
+    new_snake.goto(location)
+    snake_size.append(new_snake)
 
 snake_head = snake_size[0]
 
 
-# Set functions and listening actions for navigation keys
 def turn_left():
     snake_head.left(90)
 
@@ -42,13 +40,14 @@ def turn_right():
 
 
 # Key bindings for movement actions
-screen.listen()
-screen.onkey(turn_right, "d")
-screen.onkey(turn_left, "a")
 
 # Create a while loop to keep game going
 game_is_on = True
 while game_is_on:
+    # Set functions and listening actions for navigation keys
+    screen.listen()
+    screen.onkey(turn_right, "d")
+    screen.onkey(turn_left, "a")
     # Make snake move
     screen.update()  # Update animation
     time.sleep(0.1)  # delay of animation
@@ -66,12 +65,13 @@ while game_is_on:
         game_is_on = False
         print("You lose! You've crashed into Trumps Wall!")
 
-    snake_size[0].forward(20)
+    snake_head.forward(20)
+
     if not game_is_on:
         try_again = screen.textinput("Try again?", "Enter yes or no").lower()
         if try_again == "yes":
             game_is_on = True
-            rest_position()
+            snake_head.home()
         elif try_again == "no":
             break
         else:
