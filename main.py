@@ -49,20 +49,20 @@ while game_is_on:
         score.increase_score()
 
     # Detect collision with tail
-    for tail_part in snake.snake_size:
-        if snake.head.distance(tail_part) < 10 and tail_part != snake.head:
+    for tail_part in snake.snake_size[1:]:
+        if snake.head.distance(tail_part) < 10:  # and tail_part != snake.head:
             game_is_on = False
             score.game_over()
 
     # Ask to try again or end game.
-    if not game_is_on:
-        try_again = screen.textinput("Try again?", "Enter yes or no").lower()
-        if try_again == "yes":
-            game_is_on = True
-            snake.reset_location()
-        elif try_again == "no":
-            break
-        else:
-            print(f"Invalid input: '{try_again}. Please try again.")
+    # if not game_is_on:
+    #     try_again = screen.textinput("Try again?", "Enter yes or no").lower()
+    #     if try_again == "yes":
+    #         game_is_on = True
+    #         screen.clear()
+    #     elif try_again == "no":
+    #         break
+    #     else:
+    #         print(f"Invalid input: '{try_again}. Please try again.")
 
 screen.exitonclick()
