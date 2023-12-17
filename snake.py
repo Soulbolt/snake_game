@@ -29,6 +29,12 @@ class Snake:
     def extend(self):
         self.add_segment(self.snake_size[-1].pos())
 
+    def reset(self):
+        for part in self.snake_size:
+            part.goto(1000,1000)
+        self.snake_size.clear()
+        self.create_snakes()
+        self.head = self.snake_size[0]
 
     def move(self):
         for segment_num in range(len(self.snake_size) - 1, 0, -1):  # movement (Start, stop, step)
@@ -56,4 +62,3 @@ class Snake:
     def reset_location(self):
         for size in self.snake_size:
             size.reset()
-        # self.move()

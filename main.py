@@ -6,15 +6,15 @@ from scoreboard import Scoreboard
 
 # Set up screen size, title, background color
 screen = Screen()
-screen.setup(width=600, height=600)
+screen.setup(width=1200, height=1200)
 screen.bgcolor("black")
 screen.title("Sneaky Snake")
 screen.tracer(0)  # Allows to turn off animation and update a later time.
 # Screen Boundaries
-left_bound = -280
-right_bound = 280
-top_bound = 280
-bottom_bound = -280
+left_bound = -560
+right_bound = 560
+top_bound = 560
+bottom_bound = -560
 
 snake = Snake()
 snake_food = Food()
@@ -38,12 +38,12 @@ while game_is_on:
     snake.move()
 
     # Detect collision with Walls
-    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        game_is_on = False
-        score.game_over()
+    if snake.head.xcor() > 600 or snake.head.xcor() < -600 or snake.head.ycor() > 600 or snake.head.ycor() < -600:
+        score.reset()
+        snake.reset()
 
     # Detect collision with food
-    if snake.head.distance(snake_food) < 15:
+    if snake.head.distance(snake_food) < 50:
         snake_food.random_dots()
         snake.extend()
         score.increase_score()
@@ -51,9 +51,8 @@ while game_is_on:
     # Detect collision with tail
     for tail_part in snake.snake_size[1:]:
         if snake.head.distance(tail_part) < 10:  # and tail_part != snake.head:
-            game_is_on = False
-            score.game_over()
-
+            score.reset()
+            snake.reset()
     # Ask to try again or end game.
     # if not game_is_on:
     #     try_again = screen.textinput("Try again?", "Enter yes or no").lower()
